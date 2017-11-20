@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
+import {OrderService} from './order.service'
+
+import {CartItem} from '../restaurant-detail/shopping-cart/cart-item.model'
+
 @Component({
   selector: 'mt-order',
   templateUrl: './order.component.html',
@@ -7,9 +11,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrderComponent implements OnInit {
 
-  constructor() { }
+  delivery: number = 8
+
+  constructor(private orderService : OrderService) { }
 
   ngOnInit() {
+  }
+
+  itemsValue() :number {
+    return this.orderService.itemsValue()
+  }
+
+  cartItems(): CartItem[] {
+    return this.orderService.cartItems()
+  }
+
+  increaseQty (item: CartItem) {
+    this.orderService.increaseQty(item)
+  }
+
+  decreaseQty (item: CartItem) {
+    this.orderService.decreaseQty(item)
+  }
+
+  remove (item: CartItem) {
+    this.orderService.remove(item)
   }
 
 }
