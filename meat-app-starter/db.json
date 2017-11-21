@@ -370,5 +370,49 @@
       "restaurantId": "tasty-treats"
     }
   ],
-  "orders": []
+  "orders": [
+    {
+      "address": "asdasdas",
+      "number": "12",
+      "optionalAddress": "dasd",
+      "paymentOption": "CRED",
+      "orderItems": [
+        {
+          "quantity": 1,
+          "menuId": "fries"
+        },
+        {
+          "quantity": 1,
+          "menuId": "burger"
+        }
+      ],
+      "id": 1
+    },
+    {
+      "address": "adfadf",
+      "number": "1",
+      "optionalAddress": "",
+      "paymentOption": "DEBT",
+      "orderItems": [
+        {
+          "quantity": 1,
+          "menuId": "fries"
+        }
+      ],
+      "id": 2
+    },
+    {
+      "address": "adasdas",
+      "number": "12",
+      "optionalAddress": "",
+      "paymentOption": "DEBT",
+      "orderItems": [
+        {
+          "quantity": 1,
+          "menuId": "donut"
+        }
+      ],
+      "id": 3
+    }
+  ]
 }
