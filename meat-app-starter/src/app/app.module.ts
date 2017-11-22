@@ -4,7 +4,7 @@ import { HttpModule } from '@angular/http';
 import { RouterModule, PreloadAllModules } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import {BrowserAnimationsModule} from '@angular/plataform-browser/animations'
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 
 import {ROUTES} from './app.routes'
 
