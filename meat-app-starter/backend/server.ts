@@ -1,4 +1,11 @@
-const jsonServer = require('json-server')
+import * as jsonServer from 'json-server'
+import {Express} from 'express'
+
+import * as fs from 'fs' //Import para leitura de arquivos - FileSystem
+import * as https from 'https'
+
+import {handleAuthentication} from './auth'
+
 const server = jsonServer.create()
 const router = jsonServer.router('db.json')
 const middlewares = jsonServer.defaults()
@@ -14,6 +21,10 @@ server.get('/echo', (req, res) => {
 // To handle POST, PUT and PATCH you need to use a body-parser
 // You can use the one used by JSON Server
 server.use(jsonServer.bodyParser)
+
+//middleware para o login
+server.post('/login', handleAuthentication)
+
 server.use((req, res, next) => {
   if (req.method === 'POST') {
     req.body.createdAt = Date.now()
@@ -24,6 +35,12 @@ server.use((req, res, next) => {
 
 // Use default router
 server.use(router)
-server.listen(3000, () => {
+
+const options = {
+  cert: fs.readFileSync('./backend/keys/cert.pem'),
+  key: fs.readFileSync('./backend/keys/key.pem')
+}
+
+https.createServer(options,   server).listen(3001, () => {
   console.log('JSON Server is running')
 })
