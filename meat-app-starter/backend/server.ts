@@ -5,6 +5,7 @@ import * as fs from 'fs' //Import para leitura de arquivos - FileSystem
 import * as https from 'https'
 
 import {handleAuthentication} from './auth'
+import {handleAuthorization} from './authz'
 
 const server = jsonServer.create()
 const router = jsonServer.router('db.json')
@@ -24,6 +25,7 @@ server.use(jsonServer.bodyParser)
 
 //middleware para o login
 server.post('/login', handleAuthentication)
+server.use('/orders', handleAuthorization)
 
 server.use((req, res, next) => {
   if (req.method === 'POST') {
