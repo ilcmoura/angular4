@@ -5,7 +5,8 @@
 <section class="content">
   <section class="invoice">
 
-      {{orderForm}}
+    {{orderForm.valid}}
+      {{orderForm.value | json}}
 
         <!-- <form #form="ngForm" novalidate> -->
         <form [formGroup]="orderForm" novalidate>
